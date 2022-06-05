@@ -1,4 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 /*
@@ -35,6 +36,16 @@ object Pipeline : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
+    }
+
+    steps {
+        dockerCommand {
+            commandType = build {
+                source = file {
+                    path = "Dockerfile"
+                }
+            }
+        }
     }
 
     triggers {
