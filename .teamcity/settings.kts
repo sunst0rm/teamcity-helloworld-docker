@@ -50,7 +50,6 @@ object Pipeline : BuildType({
                     funkycoolboi1487745/helloworld-python:v1.0-%build.number%
                     funkycoolboi1487745/helloworld-python:latest
                 """.trimIndent()
-                commandArgs = ". -t"
             }
             param("dockerImage.platform", "linux")
         }
