@@ -63,6 +63,13 @@ object Pipeline : BuildType({
                 """.trimIndent()
             }
         }
+        dockerCommand {
+            name = "Run container on agent"
+            commandType = other {
+                subCommand = "run"
+                commandArgs = "-d 5000:5000 funkycoolboi1487745/helloworld-python:latest"
+            }
+        }
     }
 
     triggers {
