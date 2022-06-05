@@ -52,6 +52,15 @@ object Pipeline : BuildType({
             }
             param("dockerImage.platform", "linux")
         }
+        dockerCommand {
+            name = "Push image"
+            commandType = push {
+                namesAndTags = """
+                    funkycoolboi1487745/helloworld-python:v1.0-%build.number%
+                    funkycoolboi1487745/helloworld-python:latest
+                """.trimIndent()
+            }
+        }
     }
 
     triggers {
