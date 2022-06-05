@@ -40,11 +40,17 @@ object Pipeline : BuildType({
 
     steps {
         dockerCommand {
+            name = "Build image"
             commandType = build {
                 source = file {
                     path = "Dockerfile"
                 }
+                namesAndTags = """
+                    funkycoolboi1487745/helloworld-python:v1.0-%build.number%
+                    funkycoolboi1487745/helloworld-python:latest
+                """.trimIndent()
             }
+            param("dockerImage.platform", "linux")
         }
     }
 
