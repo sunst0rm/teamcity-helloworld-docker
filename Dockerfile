@@ -2,7 +2,7 @@ FROM python:3-alpine
 
 WORKDIR /usr/src/app
 
-EXPOSE 80007
+EXPOSE 5000
 
 COPY requirements.txt .
 
