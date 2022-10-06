@@ -51,6 +51,10 @@ object Pipeline : BuildType({
     }
 
     steps {
+        script {
+        name = "Remove container if exists"
+        scriptContent = """[ "${'$'}(docker ps -a | grep flask)" ] && docker rm -f flask"""
+        }
         dockerCommand {
             name = "Build image"
             commandType = build {
