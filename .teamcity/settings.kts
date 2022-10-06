@@ -77,7 +77,7 @@ object Pipeline : BuildType({
             name = "Run container on agent"
             commandType = other {
                 subCommand = "run"
-                commandArgs = "-d -p 5000:5000 funkycoolboi1487745/helloworld-python:latest --name flask"
+                commandArgs = "--name flask -d -p 5000:5000 funkycoolboi1487745/helloworld-python:latest"
             }
         }
     }
