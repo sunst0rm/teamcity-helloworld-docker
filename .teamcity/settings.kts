@@ -90,7 +90,7 @@ object Pipeline : BuildType({
     features {
         dockerSupport {
             loginToRegistry = on {
-                dockerRegistryId = "PROJECT_EXT_4"
+                dockerRegistryId = "PROJECT_EXT_3"
             }
         }
     }
