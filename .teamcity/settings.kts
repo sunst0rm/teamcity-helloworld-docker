@@ -1,6 +1,7 @@
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCommand
+import jetbrains.buildServer.configs.kotlin.v2019_2.projectFeatures.dockerRegistry
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 /*
@@ -30,6 +31,16 @@ version = "2021.2"
 project {
 
     buildType(Pipeline)
+
+    features {
+        dockerRegistry {
+            id = "PROJECT_EXT_3"
+            name = "Docker Registry"
+            url = "https://docker.io"
+            userName = "funkycoolboi1487745"
+            password = "zxxe0eaef83d786a17d839815900f3f450a57b4fa599617b1efc92ff44fc523273d4fe762b88eb980aa5c1dd5174626e8d3baccd94f4fb5a5031c0d2ae1fee5f4a4"
+        }
+    }
 }
 
 object Pipeline : BuildType({
@@ -66,7 +77,7 @@ object Pipeline : BuildType({
             name = "Run container on agent"
             commandType = other {
                 subCommand = "run"
-                commandArgs = "-d 5000:5000 funkycoolboi1487745/helloworld-python:latest"
+                commandArgs = "-d -p 5000:5000 funkycoolboi1487745/helloworld-python:latest"
             }
         }
     }
@@ -79,7 +90,7 @@ object Pipeline : BuildType({
     features {
         dockerSupport {
             loginToRegistry = on {
-                dockerRegistryId = "PROJECT_EXT_4"
+                dockerRegistryId = "PROJECT_EXT_3"
             }
         }
     }
