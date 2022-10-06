@@ -53,9 +53,12 @@ object Pipeline : BuildType({
     }
 
     steps {
-        script {
-            name = "Remove container if exists"
-            scriptContent = """[ "${'$'}(docker ps -a | grep flask)" ] && docker rm -f flask"""
+        dockerCommand {
+        name = "Remove previous container"
+        commandType = other {
+            subCommand = "rm"
+            commandArgs = "-f flask"
+        }
         }
         dockerCommand {
             name = "Build image"
@@ -85,6 +88,13 @@ object Pipeline : BuildType({
                 subCommand = "run"
                 commandArgs = "--name flask -d -p 5000:5000 funkycoolboi1487745/helloworld-python:latest"
             }
+        }
+        dockerCommand {
+            name = "Remove dangling images"
+            commandType = other {
+            subCommand = "image"
+            commandArgs = "prune -f"
+        }
         }
     }
 
