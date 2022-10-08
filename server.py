@@ -1,7 +1,7 @@
 from flask import Flask
 
 PORT = 5000
-MESSAGE = "Change triggers and starts new container\n"
+MESSAGE = "Hello Nana!n"
 
 app = Flask(__name__)
 
