@@ -90,9 +90,9 @@ object Pipeline : BuildType({
             }
         }
         dockerCommand {
-            name = "Remove dangling images"
+            name = "Remove all not used objects"
             commandType = other {
-            subCommand = "image"
+            subCommand = "system"
             commandArgs = "prune -f"
         }
         }
